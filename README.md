@@ -26,7 +26,7 @@ Get started with Pocket Flow:
 - To run Pocket Flow locally without a API key download ollama, then download the specific model you would like to use.
   ```ollama pull [model name]`` in the root directory of the repo create a file, for testing reasons we can use "test.py"
 
-  ```# test.py
+```# test.py
 from pocketflow import Node, Flow
 import ollama
 
@@ -52,7 +52,8 @@ flow = Flow(start=AskGemma())
 
 if __name__ == "__main__":
     q = "Explain Machine-Learning Interatomic Potentials in simple terms."
-    print(flow.run(q))``
+    print(flow.run(q))
+```
     
 - To learn more, check out the [video tutorial](https://youtu.be/0Zr3NwcvpA0) and [documentation](https://the-pocket.github.io/PocketFlow/)
 - 🎉 Join our [Discord](https://discord.gg/hUHHE9Sa6T) to connect with other developers building with Pocket Flow!
