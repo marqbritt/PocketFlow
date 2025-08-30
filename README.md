@@ -22,6 +22,37 @@ Pocket Flow is a [100-line](https://github.com/The-Pocket/PocketFlow/blob/main/p
 
 Get started with Pocket Flow:
 - To install, ```pip install pocketflow```or just copy the [source code](https://github.com/The-Pocket/PocketFlow/blob/main/pocketflow/__init__.py) (only 100 lines).
+
+- To run Pocket Flow locally without a API key download ollama, then download the specific model you would like to use.
+  ```ollama pull [model name]`` in the root directory of the repo create a file, for testing reasons we can use "test.py"
+
+  ```# test.py
+from pocketflow import Node, Flow
+import ollama
+
+MODEL_NAME = "gemma:2b"
+class AskGemma(Node):
+    def prep(self, shared):
+        # forward the flow input (your question) into exec
+        return shared
+
+    def exec(self, question: str) -> str:
+        resp = ollama.chat(
+            model=MODEL_NAME,
+            messages=[{"role": "user", "content": question}],
+            options={"temperature": 0.7}
+        )
+        return resp["message"]["content"]
+
+    def post(self, shared, prep_res, exec_res):
+        # IMPORTANT: return the model's text so Flow doesn't end up as None
+        return exec_res
+
+flow = Flow(start=AskGemma())
+
+if __name__ == "__main__":
+    q = "Explain Machine-Learning Interatomic Potentials in simple terms."
+    print(flow.run(q))```
 - To learn more, check out the [video tutorial](https://youtu.be/0Zr3NwcvpA0) and [documentation](https://the-pocket.github.io/PocketFlow/)
 - 🎉 Join our [Discord](https://discord.gg/hUHHE9Sa6T) to connect with other developers building with Pocket Flow!
 - 🎉 Pocket Flow now has [Typescript](https://github.com/The-Pocket/PocketFlow-Typescript), [Java](https://github.com/The-Pocket/PocketFlow-Java), [C++](https://github.com/The-Pocket/PocketFlow-CPP), [Go](https://github.com/The-Pocket/PocketFlow-Go), [Rust](https://github.com/The-Pocket/PocketFlow-Rust) and [PHP](https://github.com/The-Pocket/PocketFlow-PHP) versions!
