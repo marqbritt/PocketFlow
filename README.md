@@ -23,8 +23,8 @@ Pocket Flow is a [100-line](https://github.com/The-Pocket/PocketFlow/blob/main/p
 Get started with Pocket Flow:
 - To install, ```pip install pocketflow```or just copy the [source code](https://github.com/The-Pocket/PocketFlow/blob/main/pocketflow/__init__.py) (only 100 lines).
 
-- To run Pocket Flow locally without a API key download ollama, then download the specific model you would like to use.
-  ```ollama pull [model name]`` in the root directory of the repo create a file, for testing reasons we can use "test.py"
+- To run Pocket Flow locally without an API key download ollama, then download the specific model you would like to use.
+ Next run ```ollama pull [model name]```. In the root directory of the repo create a file, for testing reasons we can use "test.py", then paste the following. 
 
 ```# test.py
 from pocketflow import Node, Flow
